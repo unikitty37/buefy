@@ -18,15 +18,14 @@
                 <b-table-column :key="column.id" v-bind="column">
                     <template
                         v-if="column.searchable && !column.numeric"
-                        slot="searchable"
-                        slot-scope="props">
+                        v-slot:searchable="props">
                         <b-input
                             v-model="props.filters[props.column.field]"
                             placeholder="Search..."
                             icon="magnify"
                             size="is-small" />
                     </template>
-                    <template v-slot="props">
+                    <template v-slot:default="props">
                         {{ props.row[column.field] }}
                     </template>
                 </b-table-column>
